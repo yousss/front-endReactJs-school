@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Button, TextField } from '@material-ui/core';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { Button, TextField } from '@material-ui/core'
+import styled from 'styled-components'
 
-import './SignInPage.scss';
-import { inject } from 'mobx-react';
-import ErrorMessage from '../../components/ErrorMessage';
+import './SignInPage.scss'
+import { inject } from 'mobx-react'
+import ErrorMessage from '../../components/ErrorMessage'
 
 const Heading = styled.h1`
   margin-top: 0;
-`;
+`
 
 const FormContainer = styled.div`
   max-width: 480px;
@@ -16,49 +16,49 @@ const FormContainer = styled.div`
   background-color: #edf4ff;
   padding: 30px;
   border-radius: 5px;
-`;
+`
 
 const FormField = styled(TextField)`
   width: 100%;
-`;
+`
 
 @inject('userStore', 'routerStore')
 class SignInPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       username: '',
       password: '',
       errorMesssage: null,
-    };
+    }
   }
 
   submit = async () => {
-    this.setState({ errorMessage: null });
-    const { username, password } = this.state;
+    this.setState({ errorMessage: null })
+    const { username, password } = this.state
 
     try {
-      await this.props.userStore.signin(username, password);
-      this.props.routerStore.push('/tasks');
+      await this.props.userStore.signin(username, password)
+      this.props.routerStore.push('/tasks')
     } catch (error) {
-      const errorMessage = error.response.data.message;
-      this.setState({ errorMessage });
+      const errorMessage = error.response.data.message
+      this.setState({ errorMessage })
     }
-  };
+  }
 
   goToSignUp = () => {
     this.props.routerStore.push('/signup')
-  };
+  }
 
   render() {
-    const { errorMessage } = this.state;
+    const { errorMessage } = this.state
 
     return (
       <div className="fullscreen-wrapper">
         <FormContainer>
           <Heading>Hello!</Heading>
-          <p>Fill in your username and password to sign in.</p>
-          
+          <p>Fill in your username and password to sign in hello world.</p>
+
           {errorMessage && <ErrorMessage message={this.state.errorMessage} />}
 
           <div>
@@ -67,7 +67,7 @@ class SignInPage extends Component {
               label="Username"
               margin="dense"
               variant="outlined"
-              onChange={e => this.setState({ username: e.target.value })}
+              onChange={(e) => this.setState({ username: e.target.value })}
             />
           </div>
           <div>
@@ -77,10 +77,10 @@ class SignInPage extends Component {
               margin="dense"
               variant="outlined"
               type="password"
-              onChange={e => this.setState({ password: e.target.value })}
+              onChange={(e) => this.setState({ password: e.target.value })}
             />
           </div>
-          <hr/>
+          <hr />
           <div>
             <Button
               style={{ marginBottom: '10px' }}
@@ -98,8 +98,8 @@ class SignInPage extends Component {
           </div>
         </FormContainer>
       </div>
-    );
+    )
   }
 }
 
-export default SignInPage;
+export default SignInPage
