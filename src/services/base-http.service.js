@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default class BaseHttpService {
-  BASE_URL = 'ec2-18-222-251-51.us-east-2.compute.amazonaws.com'
+  BASE_URL = 'ec2-18-222-251-51.us-east-2.compute.amazonaws.com:8080'
   _accessToken = null
 
   constructor(routerStore) {
