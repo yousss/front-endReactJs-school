@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default class BaseHttpService {
-  BASE_URL = 'http://taskmanagementapi.us-east-2.elasticbeanstalk.com'
+  BASE_URL = 'ec2-18-222-251-51.us-east-2.compute.amazonaws.com'
   _accessToken = null
 
   constructor(routerStore) {
